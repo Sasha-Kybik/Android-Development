@@ -1,3 +1,5 @@
+![Image text](https://img.shields.io/badge/Entry%20level-beginner-brightgreen)
+  
 # GeoQuiz
     
     
@@ -13,5 +15,3 @@
 • Передача информации через интенты от одной Activity к другой.
 
 **Фото / Видео**
-  
-  
