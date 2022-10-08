@@ -15,6 +15,3 @@
 • Передача информации через интенты от одной Activity к другой.
 
 **Фото / Видео**
-  <img src="Sasha-Kybik/Android-Development/GeoQuiz/Screenshot_1.jpg" width="200" height="50"/>
-  ![Alt text](https://github.com/Sasha-Kybik/Android-Development/tree/main/GeoQuiz/Screenshot_1.jpg)
-  https://github.com/Sasha-Kybik/Android-Development/tree/main/GeoQuiz/Screenshot_1.jpg
