@@ -1,0 +1,34 @@
+<resources>
+    <!--    Application    -->
+    <string name="app_name">GeoQuiz</string>
+
+    <!--    Questions    -->
+    <string name="question_africa">Исток реки Нил находится в Египте?</string>
+    <string name="question_americas">Река Амазонка самая длинная река в Америке?</string>
+    <string name="question_asia">Озеро Байкал является самым древним и глубоким пресным озером в мире?</string>
+    <string name="question_australia">Канберра является столицей Австралии?</string>
+    <string name="question_mideast">Суэцкий канал соединяет Красное море с Индийским океаном?</string>
+    <string name="question_oceans">Тихий океан больше, чем Атлатнический океан?</string>
+
+    <!--    Buttons    -->
+    <string name="true_button">Да</string>
+    <string name="false_button">Нет</string>
+    <string name="next_button">Далее</string>
+    <string name="back_button">Назад</string>
+    <string name="show_answer_button">Показать ответ</string>
+    <string name="cheat_button">Узнать ответ</string>
+
+    <!--    Snackbars    -->
+    <string name="correct_snackbar">Правильно!</string>
+    <string name="incorrect_snackbar">Неправильно!</string>
+
+    <!--    TextViews    -->
+    <string name="warning_text">Вы действильно хотите увидеть правильный ответ?</string>
+    <string name="count_hint_text">Количество подсказок:</string>
+    <string name="android_text">Android</string>
+    <string name="api_level_text">API level</string>
+
+    <!--    Toasts    -->
+    <string name="judgment_toast">Нельзя подсматривать!</string>
+    <string name="your_score_toast">Вы набрали</string>
+</resources>
