@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_width="match_parent"
+    app:layout_height="match_parent"
+    app:gravity="center"
+    app:orientation="vertical"
+    tools:ignore="NamespaceTypo">
+
+    <TextView
+        app:id="@+id/question_text_view"
+        app:layout_width="wrap_content"
+        app:layout_height="wrap_content"
+        app:gravity="center"
+        app:padding="24dp"
+        tools:text="@string/question_australia" />
+
+    <LinearLayout
+        app:layout_width="wrap_content"
+        app:layout_height="wrap_content"
+        app:orientation="horizontal">
+
+        <Button
+            app:id="@+id/true_button"
+            app:layout_width="wrap_content"
+            app:layout_height="wrap_content"
+            app:layout_marginRight="3dp"
+            app:layout_weight="1"
+            app:text="@string/true_button" />
+
+        <Button
+            app:id="@+id/false_button"
+            app:layout_width="wrap_content"
+            app:layout_height="wrap_content"
+            app:layout_marginLeft="3dp"
+            app:layout_weight="1"
+            app:text="@string/false_button" />
+    </LinearLayout>
+
+    <LinearLayout
+        app:layout_width="wrap_content"
+        app:layout_height="wrap_content"
+        app:orientation="horizontal">
+
+        <Button
+            app:id="@+id/cheat_button"
+            app:layout_width="wrap_content"
+            app:layout_height="wrap_content"
+            app:layout_marginTop="24dp"
+            app:layout_weight="1"
+            app:text="@string/cheat_button" />
+    </LinearLayout>
+
+    <TextView
+        app:id="@+id/count_hint_text_view"
+        app:layout_width="wrap_content"
+        app:layout_height="wrap_content"
+        app:padding="12dp"
+        app:text="Количество подсказок:" />
+
+    <LinearLayout
+        app:layout_width="wrap_content"
+        app:layout_height="wrap_content"
+        app:orientation="horizontal">
+
+        <ImageButton
+            app:id="@+id/back_button"
+            app:layout_width="wrap_content"
+            app:layout_height="wrap_content"
+            app:layout_marginTop="24dp"
+            app:layout_marginRight="3dp"
+            app:contentDescription="@string/back_button"
+            app:minWidth="48dp"
+            app:minHeight="48dp"
+            app:src="@drawable/arrow_left" />
+
+        <ImageButton
+            app:id="@+id/next_button"
+            app:layout_width="wrap_content"
+            app:layout_height="wrap_content"
+            app:layout_marginLeft="3dp"
+            app:layout_marginTop="24dp"
+            app:contentDescription="@string/next_button"
+            app:minWidth="48dp"
+            app:minHeight="48dp"
+            app:src="@drawable/arrow_right" />
+    </LinearLayout>
+
+</LinearLayout>

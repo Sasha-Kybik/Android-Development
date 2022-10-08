@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(SecondActivity)/app/src/main/res/layout-land/activity_main.xml" value="0.22" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(SecondActivity)/app/src/main/res/layout/activity_cheat.xml" value="0.35271483539974346" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(SecondActivity)/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(SecondActivity)4/app/src/main/res/layout-land/activity_main.xml" value="0.26806327490380505" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(SecondActivity)4/app/src/main/res/layout/activity_cheat.xml" value="0.3480119709277469" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(SecondActivity)4/app/src/main/res/layout/activity_main.xml" value="0.2842248413417951" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(ViewModel)/app/src/main/res/layout-land/activity_main.xml" value="0.3640776699029126" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(ViewModel)/app/src/main/res/layout/activity_main.xml" value="0.19794784095767423" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(arrow)/app/src/main/res/layout-land/activity_main.xml" value="0.34031637451902524" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz(arrow)/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz/app/src/main/res/drawable-v24/ic_launcher_foreground (2).xml" value="0.428" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz/app/src/main/res/layout-land/activity_main.xml" value="0.5" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz/app/src/main/res/layout/activity_cheat.xml" value="0.75" />
+        <entry key="..\:/Projects/Android/Kotlin/GeoQuiz/app/src/main/res/layout/activity_main.xml" value="0.75" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
