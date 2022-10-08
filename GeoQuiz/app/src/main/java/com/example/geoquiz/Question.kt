@@ -2,7 +2,7 @@ package com.example.geoquiz
 
 import androidx.annotation.StringRes
 
-data class Question(@StringRes // Использование строкового идентификатора ресурса
+data class Question(@StringRes
                     val textResId: Int,
                     val answer: Boolean,
-                    var wasAnswered: Boolean = false) // Был ли дан ответ на данный вопрос
+                    var wasAnswered: Boolean = false)

@@ -17,17 +17,15 @@ class CheatActivity : AppCompatActivity() {
     private lateinit var showAnswerButton: Button
     private lateinit var versionAPITextView: TextView
 
-    private var answerIsTrue = false // Согласие на подсмотр правильного ответа
-    private var answerWasShown = false // Ответ был показан
+    private var answerIsTrue = false
+    private var answerWasShown = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cheat)
 
-        // Позволяет избежать читерство пользователя, путём сохранения состояния активности при повороте экрана
         val answerWasShown = savedInstanceState?.getBoolean(EXTRA_ANSWER_SHOWN, false) ?: false
 
-        // Позволяет получить из интента запрос на подсмотр правильного ответа (переданное из main_activity)
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
 
         answerTextView = findViewById(R.id.answer_text_view)
@@ -44,13 +42,11 @@ class CheatActivity : AppCompatActivity() {
         versionAndroidAPI()
     }
 
-    // Сохранение состояния состояния пользовательского интерфейса
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(EXTRA_ANSWER_SHOWN, answerWasShown)
     }
 
-    // Показ правильного ответа
     private fun showAnswer(answerIsTrue: Boolean, show: Boolean) {
         if (show) {
             val answerText = when {
@@ -63,7 +59,6 @@ class CheatActivity : AppCompatActivity() {
         setAnswerShownResult(show)
     }
 
-    // Отображение версии Андроида и её версии API
     private fun versionAndroidAPI() {
         val versionAndroid = Build.VERSION.RELEASE
         val versionAPI = Build.VERSION.SDK_INT
@@ -74,7 +69,6 @@ class CheatActivity : AppCompatActivity() {
                                                 "$versionAPI)")
     }
 
-    // Сообщает родительской активности, подсмотрел ли пользователь правильный ответ
     private fun setAnswerShownResult(answerWasShown: Boolean) {
         val data = Intent().apply {
             putExtra(EXTRA_ANSWER_SHOWN, answerWasShown)
@@ -82,8 +76,6 @@ class CheatActivity : AppCompatActivity() {
         setResult(Activity.RESULT_OK, data)
     }
 
-    // Другие классы не должны знать, подробности реализации данных, которые CheatActivity ожидает получить в дополнении интента
-    // Создание интента для получения данных
     companion object {
         fun newIntent(packageContext: Context, answerIsTrue: Boolean): Intent {
             return Intent(packageContext, CheatActivity::class.java).apply {

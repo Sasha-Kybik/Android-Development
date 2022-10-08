@@ -19,45 +19,41 @@ class QuizViewModel : ViewModel() {
         Question(R.string.question_oceans, true)
     )
 
-    var currentIndex = 0 // Текущий № вопроса
-    var questionsAnswered = 0 // Количество отвеченных вопросов
-    var questionsRight = 0 // Количество правильных ответов
-    var isCheater = false // Подсматривал пользователь правильный ответ?
-    var countCheatLimit = 3 // Количество доступных подсказок
+    var currentIndex = 0
+    var questionsAnswered = 0
+    var questionsRight = 0
+    var isCheater = false
+    var countCheatLimit = 3
 
-    // Уничтожение класса ViewModel
     override fun onCleared() {
         super.onCleared()
         Log.d(TAG, "Экземпляр ViewModel скоро будет уничтожен")
     }
 
     val currentQuestionAnswer: Boolean
-        get() = questionBank[currentIndex].answer // Возвращает ответ на данный вопрос
+        get() = questionBank[currentIndex].answer
 
     val currentQuestionText: Int
-        get() = questionBank[currentIndex].textResId // Возвращает вопрос
+        get() = questionBank[currentIndex].textResId
 
     val currentQuestionIsAnswered: Boolean
-        get() = questionBank[currentIndex].wasAnswered // Возвращает ответ, что на данный вопрос был дан ответ пользователем
+        get() = questionBank[currentIndex].wasAnswered
 
     val questionBankSize: Int
-        get() = questionBank.size // Возвращает размер коллекции
+        get() = questionBank.size
 
-    // Переход к следующему вопросу
     fun moveToNext() {
         if (currentIndex < questionBank.size - 1) {
             currentIndex++
         }
     }
 
-    // Переход к предыдущему вопросу
     fun moveToPrevious() {
         if (currentIndex != 0) {
             currentIndex--
         }
     }
 
-    // Вопрос помечается, что на него был получен ответ от пользователя
     fun answered() {
         questionBank[currentIndex].wasAnswered = true
     }

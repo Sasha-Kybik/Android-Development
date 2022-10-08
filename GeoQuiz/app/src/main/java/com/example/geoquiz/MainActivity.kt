@@ -24,36 +24,28 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTextView: TextView
     private lateinit var countHintTextView: TextView
 
-    // Свойство для хранения экземпляров QuizViewModel
     private val quizViewModel: QuizViewModel by lazy {
         ViewModelProvider(this).get(QuizViewModel::class.java)
     }
 
-    // Современное решение взамен метода startActivityForResult(intent, REQUEST_CODE_CHEAT), внедрённое с Андроид11
-    // Получение информации из дочерней активности
     private val cheatResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        // Была использована подсказка? ДА/НЕТ
         if (result.resultCode == RESULT_OK) {
             quizViewModel.isCheater =
                 result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
         }
 
-        // Счётчик подсказок
         if (quizViewModel.isCheater && quizViewModel.countCheatLimit > 0) {
             quizViewModel.countCheatLimit--
             cheatBlock()
         }
     }
 
-    // Создание экземпляра активности
     @SuppressLint("Ограничение по API")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate(Bundle?) вызван")
         setContentView(R.layout.activity_main)
 
-        // Загрузка № вопроса, хранящегося в ключе KEY_INDEX и устанавливка его
-        // в качестве текущего значения. Если индекс не сохранён, то устанавливается значение = 0
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         quizViewModel.currentIndex = currentIndex
 
@@ -73,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
 
-        // Переход к следующему вопросу при нажатии на текст вопроса
         questionTextView.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
@@ -93,7 +84,6 @@ class MainActivity : AppCompatActivity() {
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
 
-            // Вид анимации в зависимости от версии Андроида, для API23
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val options = ActivityOptionsCompat
                     .makeClipRevealAnimation(view, 0, 0, view.width, view.height)
@@ -104,7 +94,6 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
-        // Необходимо в случае поворота экрана и приостановки активности
         updateQuestion()
         trueFalseBlock()
         cheatBlock()
@@ -125,7 +114,6 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onPause() вызван")
     }
 
-    // Сохраняет данные когда приложение приостанавливается (onPause или onStop)
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         Log.i(TAG, "onSaveInstanceState")
@@ -142,7 +130,6 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onDestroy() вызван")
     }
 
-    // Получение текущего значения и отображение вопроса под данным индексом в коллекции
     private fun updateQuestion() {
         Log.d(TAG, "Обновление текста вопроса", Exception())
         val questionTextResId = quizViewModel.currentQuestionText
@@ -150,7 +137,6 @@ class MainActivity : AppCompatActivity() {
         trueFalseBlock()
     }
 
-    // Сравнение ответов пользователя с ответами из коллекции
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
         when {
@@ -182,7 +168,6 @@ class MainActivity : AppCompatActivity() {
         quizScore()
     }
 
-    // Проверяет, был ли дан ответ на вопрос, если да - блокирует нажатие кнопок "ДА" и "НЕТ" для повторного ответа
     private fun trueFalseBlock() {
         if (quizViewModel.currentQuestionIsAnswered) {
             trueButton.isEnabled = false
@@ -193,7 +178,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Выводит доступное количество подсказок, в случае исчерпание лимита - блокирует кнопку подсказки
     private fun cheatBlock() {
         if (quizViewModel.countCheatLimit in 3 downTo 1 step 1) {
             cheatButton.isEnabled = true
@@ -206,7 +190,6 @@ class MainActivity : AppCompatActivity() {
         countHintTextView.append(" " + quizViewModel.countCheatLimit.toString())
     }
 
-    // Проверяет количество введённых ответов с количеством вопросов, в случае равенства вычисляется % правильных ответов
     private fun quizScore() {
         if (quizViewModel.questionsAnswered == quizViewModel.questionBankSize) {
             val totalScore =
