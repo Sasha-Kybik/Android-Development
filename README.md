@@ -5,4 +5,4 @@
   
 **В состав репозитория входят следующие проекты:**
 
-+ **GeoQuiz** : Программа-викторина с двумя Activity с архитектурой MVC (Model-View-Controller).
+> + **GeoQuiz** : Программа-викторина с двумя Activity с архитектурой MVC (Model-View-Controller).
