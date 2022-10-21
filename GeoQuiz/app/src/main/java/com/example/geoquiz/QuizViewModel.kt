@@ -25,7 +25,6 @@ class QuizViewModel : ViewModel() {
     var isCheater = false
     var countCheatLimit = 3
 
-    // Уничтожение класса ViewModel
     override fun onCleared() {
         super.onCleared()
         Log.d(TAG, "Экземпляр ViewModel скоро будет уничтожен")
