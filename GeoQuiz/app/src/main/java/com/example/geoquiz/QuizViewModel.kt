@@ -20,11 +20,12 @@ class QuizViewModel : ViewModel() {
     )
 
     var currentIndex = 0
-    var questionsAnswered = 0
+    var countQuestionsAnswered = 0
     var questionsRight = 0
     var isCheater = false
     var countCheatLimit = 3
 
+    // Уничтожение класса ViewModel
     override fun onCleared() {
         super.onCleared()
         Log.d(TAG, "Экземпляр ViewModel скоро будет уничтожен")
@@ -36,8 +37,11 @@ class QuizViewModel : ViewModel() {
     val currentQuestionText: Int
         get() = questionBank[currentIndex].textResId
 
-    val currentQuestionIsAnswered: Boolean
+    var currentQuestionIsAnswered: Boolean
         get() = questionBank[currentIndex].wasAnswered
+        set(value) {
+            questionBank[currentIndex].wasAnswered = value
+        }
 
     val questionBankSize: Int
         get() = questionBank.size
@@ -52,9 +56,5 @@ class QuizViewModel : ViewModel() {
         if (currentIndex != 0) {
             currentIndex--
         }
-    }
-
-    fun answered() {
-        questionBank[currentIndex].wasAnswered = true
     }
 }

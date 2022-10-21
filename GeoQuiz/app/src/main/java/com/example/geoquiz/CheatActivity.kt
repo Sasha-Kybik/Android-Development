@@ -37,8 +37,8 @@ class CheatActivity : AppCompatActivity() {
                 showAnswer(answerIsTrue, true)
             }
         }
-
         showAnswer(answerIsTrue, answerWasShown)
+
         versionAndroidAPI()
     }
 
@@ -69,9 +69,9 @@ class CheatActivity : AppCompatActivity() {
                                                 "$versionAPI)")
     }
 
-    private fun setAnswerShownResult(answerWasShown: Boolean) {
+    private fun setAnswerShownResult(isAnswerShown: Boolean) {
         val data = Intent().apply {
-            putExtra(EXTRA_ANSWER_SHOWN, answerWasShown)
+            putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown)
         }
         setResult(Activity.RESULT_OK, data)
     }

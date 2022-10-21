@@ -28,18 +28,6 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this).get(QuizViewModel::class.java)
     }
 
-    private val cheatResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            quizViewModel.isCheater =
-                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
-        }
-
-        if (quizViewModel.isCheater && quizViewModel.countCheatLimit > 0) {
-            quizViewModel.countCheatLimit--
-            cheatBlock()
-        }
-    }
-
     @SuppressLint("Ограничение по API")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,21 +56,24 @@ class MainActivity : AppCompatActivity() {
         questionTextView.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
+            trueFalseBlock()
         }
 
         nextButton.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
+            trueFalseBlock()
         }
 
         previousButton.setOnClickListener {
             quizViewModel.moveToPrevious()
             updateQuestion()
+            trueFalseBlock()
         }
 
         cheatButton.setOnClickListener { view ->
             val answerIsTrue = quizViewModel.currentQuestionAnswer
-            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue) // Запуск 2-ой activity
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val options = ActivityOptionsCompat
@@ -92,11 +83,23 @@ class MainActivity : AppCompatActivity() {
                 cheatResult.launch(intent)
             }
             updateQuestion()
+            trueFalseBlock()
         }
 
         updateQuestion()
         trueFalseBlock()
         cheatBlock()
+    }
+
+    private val cheatResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            quizViewModel.isCheater = result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+        }
+
+        if (quizViewModel.isCheater && quizViewModel.countCheatLimit > 0) {
+            quizViewModel.countCheatLimit--
+            cheatBlock()
+        }
     }
 
     override fun onStart() {
@@ -131,10 +134,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateQuestion() {
-        Log.d(TAG, "Обновление текста вопроса", Exception())
         val questionTextResId = quizViewModel.currentQuestionText
         questionTextView.setText(questionTextResId)
-        trueFalseBlock()
     }
 
     private fun checkAnswer(userAnswer: Boolean) {
@@ -162,8 +163,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        quizViewModel.questionsAnswered++
-        quizViewModel.answered()
+        quizViewModel.countQuestionsAnswered++
+        quizViewModel.currentQuestionIsAnswered = true
         trueFalseBlock()
         quizScore()
     }
@@ -172,6 +173,7 @@ class MainActivity : AppCompatActivity() {
         if (quizViewModel.currentQuestionIsAnswered) {
             trueButton.isEnabled = false
             falseButton.isEnabled = false
+
         } else {
             trueButton.isEnabled = true
             falseButton.isEnabled = true
@@ -191,9 +193,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun quizScore() {
-        if (quizViewModel.questionsAnswered == quizViewModel.questionBankSize) {
+        if (quizViewModel.countQuestionsAnswered == quizViewModel.questionBankSize) {
             val totalScore =
-                ((quizViewModel.questionsRight * 100) / quizViewModel.questionsAnswered).toDouble()
+                ((quizViewModel.questionsRight * 100) / quizViewModel.countQuestionsAnswered).toDouble()
             Toast.makeText(this, "${resources.getString(R.string.your_score_toast)} $totalScore %", Toast.LENGTH_LONG)
                 .show()
         }
