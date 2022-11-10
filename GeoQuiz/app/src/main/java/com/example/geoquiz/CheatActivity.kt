@@ -59,6 +59,13 @@ class CheatActivity : AppCompatActivity() {
         setAnswerShownResult(show)
     }
 
+    private fun setAnswerShownResult(answerWasShown: Boolean) {
+        val data = Intent().apply {
+            putExtra(EXTRA_ANSWER_SHOWN, answerWasShown)
+        }
+        setResult(Activity.RESULT_OK, data)
+    }
+
     private fun versionAndroidAPI() {
         val versionAndroid = Build.VERSION.RELEASE
         val versionAPI = Build.VERSION.SDK_INT
@@ -67,13 +74,6 @@ class CheatActivity : AppCompatActivity() {
                                                 "$versionAndroid " +
                                                 "(${resources.getString(R.string.api_level_text)} " +
                                                 "$versionAPI)")
-    }
-
-    private fun setAnswerShownResult(isAnswerShown: Boolean) {
-        val data = Intent().apply {
-            putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown)
-        }
-        setResult(Activity.RESULT_OK, data)
     }
 
     companion object {

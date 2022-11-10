@@ -6,11 +6,8 @@ import androidx.lifecycle.ViewModel
 private  const val TAG = "QuizViewModel"
 
 class QuizViewModel : ViewModel() {
-    init {
-        Log.d(TAG, "Экземпляр ViewModel был создан")
-    }
 
-    val questionBank = listOf(
+    private val questionBank = listOf(
         Question(R.string.question_africa, false),
         Question(R.string.question_americas, true),
         Question(R.string.question_asia, true),
@@ -23,11 +20,11 @@ class QuizViewModel : ViewModel() {
     var countQuestionsAnswered = 0
     var questionsRight = 0
     var isCheater = false
-    var countCheatLimit = 3
+    var cheatCountLimit = 3
+    var answersOfUser = BooleanArray(questionBankSize)
 
     override fun onCleared() {
         super.onCleared()
-        Log.d(TAG, "Экземпляр ViewModel скоро будет уничтожен")
     }
 
     val currentQuestionAnswer: Boolean
@@ -37,10 +34,8 @@ class QuizViewModel : ViewModel() {
         get() = questionBank[currentIndex].textResId
 
     var currentQuestionIsAnswered: Boolean
-        get() = questionBank[currentIndex].wasAnswered
-        set(value) {
-            questionBank[currentIndex].wasAnswered = value
-        }
+        get() = answersOfUser[currentIndex]
+        set(value) { answersOfUser[currentIndex] = value }
 
     val questionBankSize: Int
         get() = questionBank.size

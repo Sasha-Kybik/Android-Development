@@ -14,6 +14,9 @@ import com.google.android.material.snackbar.Snackbar
 
 private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"
+private const val CHEAT_COUNT_LIMIT = "com.example.geoquiz.cheatCount"
+private const val ANSWERS = "com.example.geoquiz.answers"
+private const val QUESTIONS_ANSWERED = "com.example.geoquiz.questionsAnswered"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var trueButton: Button
@@ -31,11 +34,19 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("Ограничение по API")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate(Bundle?) вызван")
         setContentView(R.layout.activity_main)
 
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         quizViewModel.currentIndex = currentIndex
+
+        val cheatCount = savedInstanceState?.getInt(CHEAT_COUNT_LIMIT, 3) ?: 3
+        quizViewModel.cheatCountLimit = cheatCount
+
+        val answers = (savedInstanceState?.getSerializable(ANSWERS) ?: BooleanArray(quizViewModel.questionBankSize)) as BooleanArray
+        quizViewModel.answersOfUser = answers
+
+        val questionsAnswered = savedInstanceState?.getInt(QUESTIONS_ANSWERED, 0) ?: 0
+        quizViewModel.countQuestionsAnswered = questionsAnswered
 
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
@@ -73,9 +84,9 @@ class MainActivity : AppCompatActivity() {
 
         cheatButton.setOnClickListener { view ->
             val answerIsTrue = quizViewModel.currentQuestionAnswer
-            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue) // Запуск 2-ой activity
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 val options = ActivityOptionsCompat
                     .makeClipRevealAnimation(view, 0, 0, view.width, view.height)
                 cheatResult.launch(intent, options)
@@ -96,41 +107,38 @@ class MainActivity : AppCompatActivity() {
             quizViewModel.isCheater = result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
         }
 
-        if (quizViewModel.isCheater && quizViewModel.countCheatLimit > 0) {
-            quizViewModel.countCheatLimit--
+        if (quizViewModel.isCheater && quizViewModel.cheatCountLimit > 0) {
+            quizViewModel.cheatCountLimit--
             cheatBlock()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart() вызван")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume() вызван")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d(TAG, "onPause() вызван")
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
-        Log.i(TAG, "onSaveInstanceState")
         savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentIndex)
+        savedInstanceState.putInt(CHEAT_COUNT_LIMIT, quizViewModel.cheatCountLimit)
+        savedInstanceState.putBooleanArray(ANSWERS, quizViewModel.answersOfUser)
+        savedInstanceState.putInt(QUESTIONS_ANSWERED, quizViewModel.countQuestionsAnswered)
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop() вызван")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy() вызван")
     }
 
     private fun updateQuestion() {
@@ -170,7 +178,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun trueFalseBlock() {
-        if (quizViewModel.currentQuestionIsAnswered) {
+       if (quizViewModel.currentQuestionIsAnswered) {
             trueButton.isEnabled = false
             falseButton.isEnabled = false
 
@@ -181,7 +189,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun cheatBlock() {
-        if (quizViewModel.countCheatLimit in 3 downTo 1 step 1) {
+        if (quizViewModel.cheatCountLimit in 3 downTo 1 step 1) {
             cheatButton.isEnabled = true
         }
         else {
@@ -189,7 +197,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         countHintTextView.text = getString(R.string.count_hint_text)
-        countHintTextView.append(" " + quizViewModel.countCheatLimit.toString())
+        Log.d(TAG, "@${hashCode()}, cheatBlock(), countCheatLimit = ${quizViewModel.cheatCountLimit}")
+        countHintTextView.append(" " + quizViewModel.cheatCountLimit.toString())
     }
 
     private fun quizScore() {
