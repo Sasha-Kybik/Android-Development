@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityOptionsCompat
@@ -197,7 +196,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         countHintTextView.text = getString(R.string.count_hint_text)
-        Log.d(TAG, "@${hashCode()}, cheatBlock(), countCheatLimit = ${quizViewModel.cheatCountLimit}")
         countHintTextView.append(" " + quizViewModel.cheatCountLimit.toString())
     }
 
