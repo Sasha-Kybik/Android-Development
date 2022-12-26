@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IntentoCriminal</string>
+    <string name="crime_title_hint">Introduzca un título para el crimen</string>
+    <string name="crime_title_label">Título</string>
+    <string name="crime_details_label">Detalles</string>
+    <string name="crime_solved_label">Solucionado</string>
+    <string name="crime_photo_button_description">Tomar foto de la escena del crimen</string>
+    <string name="crime_photo_no_image_description">Foto de la escena del crimen (no establecida)</string>
+    <string name="crime_photo_image_description">Foto de la escena del crimen (establecida)</string>
+    <string name="call_in_police">Contacta a la policía</string>
+    <string name="enter_time_button">Introduce la hora</string>
+    <string name="new_crime">Crimen Nuevo</string>
+    <string name="list_is_empty">La lista está vacía</string>
+    <string name="crime_suspect_text">Elegir Sospechoso</string>
+    <string name="crime_report_text">Enviar el Informe del Crimen</string>
+    <string name="crime_report">%1$s! El crimen fue descubierto el %2$s, %3$s, y %4$s</string>
+    <string name="crime_report_solved">El caso está resuelto</string>
+    <string name="crime_report_unsolved">El caso no está resuelto</string>
+    <string name="crime_report_no_suspect">no hay sospechoso</string>
+    <string name="crime_report_suspect">el/la sospechoso/a es %s</string>
+    <string name="crime_report_subject">IntentoCriminal Informe del Crimen</string>
+    <string name="send_report">Enviar el informe del crimen a través de</string>
+    <string name="suspect_call">llamar a un sospechoso</string>
+    <string name="permission_close">Acceso cerrado</string>
+    <string name="no_photo">Sin fotografía</string>
+    <string name="crime_not_solved_description">crimen no resuelto</string>
+    <string name="crime_solved_description">crimen resuelto</string>
+    <string name="suspect_label">Sospechar</string>
+    <string name="date_label">la fecha</string>
+    <string name="crime_photo_update">Foto del crimen actualizada</string>
+</resources>

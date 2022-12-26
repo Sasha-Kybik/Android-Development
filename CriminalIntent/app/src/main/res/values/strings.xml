@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">CriminalIntent</string>
+    <string name="crime_title_hint">Введите название нарушения</string>
+    <string name="crime_title_label">Название</string>
+    <string name="crime_details_label">Содержание</string>
+    <string name="crime_solved_label">Простить</string>
+    <string name="crime_photo_button_description">Сфотографируете место нарушения</string>
+    <string name="crime_photo_no_image_description">Фото с места нарушения (не установлено)</string>
+    <string name="crime_photo_image_description">Фото с места нарушения (установлено)</string>
+    <string name="call_in_police">Связаться с полицией</string>
+    <string name="enter_time_button">Ввести время</string>
+    <string name="new_crime">Новое преступление</string>
+    <string name="list_is_empty">Список пуст</string>
+    <string name="crime_suspect_text">Выбор подозреваемого</string>
+    <string name="crime_report_text">Отправить отчёт</string>
+    <string name="crime_report">%1$s! Преступление было раскрыто на %2$s, %3$s, и %4$s</string>
+    <string name="crime_report_solved">Дело расскрыто</string>
+    <string name="crime_report_unsolved">Дело не расскрыто</string>
+    <string name="crime_report_no_suspect">Подозреваемых нет</string>
+    <string name="crime_report_suspect">Подозреваемый это %s</string>
+    <string name="crime_report_subject">Отчёт об умышленном преступлении</string>
+    <string name="send_report">Отправить сообщение о преступлении</string>
+    <string name="suspect_call">Позвонить подозреваемому</string>
+    <string name="permission_close">Доступ закрыт</string>
+    <string name="no_photo">Нет фото</string>
+    <string name="crime_not_solved_description">Нарушение не расскрыто</string>
+    <string name="crime_solved_description">Нарушение расскрыто</string>
+    <string name="suspect_label">Подозреваемый</string>
+    <string name="date_label">Дата</string>
+    <string name="crime_photo_update">Фото преступления обновлено</string>
+</resources>
