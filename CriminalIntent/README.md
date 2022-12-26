@@ -27,11 +27,6 @@
 
 <details>
 <summary>Посмотреть фото</summary>
-<img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/CriminalIntent/Screenshot_1.jpg" alt="Фото" width="300"/> <img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/CriminalIntent/Screenshot_2.jpg" alt="Фото" width="300"/> <img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/CriminalIntent/Screenshot_3.jpg" alt="Фото" width="600"/>
-</details>
-
-<img src="images/question.png" width="300">  <img src="images/cheat.png" width="300">
-
 <table>
 	<tr>
 		<td>
@@ -45,3 +40,4 @@
 		</td>
 	</tr>
 </table>
+</details>
