@@ -11,6 +11,7 @@ import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.format.DateFormat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_crime.*
 import java.io.File
 import java.text.DateFormat.getDateInstance
+import java.text.DateFormat.getTimeInstance
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,7 +38,6 @@ private const val REQUEST_DATE = 0
 private const val DIALOG_TIME = "DialogTime"
 private const val REQUEST_TIME = 1
 private const val DATE_FORMAT = "EEE, dd, MMM, yyyy"
-private const val TIME_FORMAT = "HH:mm:ss"
 private const val REQUEST_CONTACT = 2
 private const val REQUEST_PHONE = 3
 private const val REQUEST_PHOTO = 4
@@ -161,12 +162,11 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks, TimePickerFragme
         }
 
         reportButton.setOnClickListener {
+            Log.d(TAG, "Вызов неявного интента")
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, getCrimeReport())
-                putExtra(
-                    Intent.EXTRA_SUBJECT,
-                    getString(R.string.crime_report_subject)
+                putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject)
                 )
             }.also { intent ->
                 val chooserIntent = Intent.createChooser(intent, getString(R.string.send_report))
@@ -275,7 +275,6 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks, TimePickerFragme
         val dateString = getDateInstance().format(crime.date)
         dateButton.text = dateString
         timeButton.text = crime.time
-
         solvedCheckBox.apply {
             isChecked = crime.isSolved
             jumpDrawablesToCurrentState()

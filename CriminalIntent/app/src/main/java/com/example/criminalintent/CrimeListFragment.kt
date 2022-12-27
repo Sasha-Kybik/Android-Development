@@ -10,7 +10,6 @@ import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -124,7 +123,6 @@ class CrimeListFragment : Fragment() {
         private val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
         private val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
         private val solvedImageView: ImageView = itemView.findViewById(R.id.crime_solved)
-        private val policeButton: Button = itemView.findViewById(R.id.police_button)
 
         init {
             itemView.setOnClickListener(this)
@@ -140,21 +138,6 @@ class CrimeListFragment : Fragment() {
                 View.VISIBLE
             } else {
                 View.GONE
-            }
-
-            policeButton.visibility = if (crime.requiresPolice) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-
-            if (itemViewType == R.layout.list_item_crime_police) {
-                val policeButton: Button = itemView.findViewById(R.id.police_button)
-
-                policeButton.setOnClickListener {
-                    Toast.makeText(context, "Полиция вызвана!", Toast.LENGTH_SHORT)
-                        .show()
-                }
             }
         }
 
@@ -176,14 +159,6 @@ class CrimeListFragment : Fragment() {
         override fun onBindViewHolder(holder: CrimeHolder, position: Int) {
             val crime = crimes[position]
             holder.bind(crime)
-        }
-
-        override fun getItemViewType(position: Int): Int {
-            return if (crimes[position].requiresPolice) {
-                R.layout.list_item_crime_police
-            } else {
-                R.layout.list_item_crime
-            }
         }
     }
 
