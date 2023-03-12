@@ -29,7 +29,7 @@
 		<td>
 			<img hight="350" alt="render-one" src="Screenshot_2.jpg">
 		</td>
-    <td>
-			
+    <tr>
+    
 </table>
 </details>
