@@ -24,7 +24,7 @@
 <table>
 	<tr>
 		<td>
-			<img width="306" alt="render-one" src="Screenshot_1.jpg">
+			<img width="612" alt="render-one" src="Screenshot_1.jpg">
 		</td>
 		<td>
 			<img hight="306" alt="render-one" src="Screenshot_2.jpg">
