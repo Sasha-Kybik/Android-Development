@@ -15,7 +15,7 @@
 • Изменение и настройка темы.  
 • Придание кнопкам различных геометрических форм (прямоугольник, круг).  
 • Использование графических объектов в качестве кнопок.  
-• Установка своей иконки для приложения.  
+• Установка иконки для приложения.  
 
 **Фото**
 
@@ -24,12 +24,12 @@
 <table>
 	<tr>
 		<td>
-			<img width="306" alt="render-one" src="Screenshot_1.jpg">
+			<img width="576" alt="render-one" src="Screenshot_1.jpg">
 		</td>
 		<td>
-			<img hight="306" alt="render-one" src="Screenshot_2.jpg">
+			<img hight="350" alt="render-one" src="Screenshot_2.jpg">
 		</td>
-    <td>
-			
+    <tr>
+    
 </table>
 </details>
