@@ -16,5 +16,5 @@
 
 <details>
 <summary>Посмотреть фото</summary>
-<img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/Sunset/Screenshot_1.jpg" alt="Фото" width="300"/> <img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/Sunset/Screenshot_2.jpg" alt="Фото" width="300"/> <img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/Sunset/Screenshot_3.jpg" alt="Фото" width="600"/>
+<img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/Sunset/Screenshot_1.jpg" alt="Фото" width="300"/> <img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/Sunset/Screenshot_2.jpg" alt="Фото" width="300"/> <img src="https://github.com/Sasha-Kybik/Android-Development/blob/main/Sunset/Screenshot_3.jpg" alt="Фото" width="300"/>
 </details>
